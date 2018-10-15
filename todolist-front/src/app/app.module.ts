@@ -17,6 +17,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { fakeBackendProvider } from './_helpers';
 import * as $ from "jquery";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import {
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatCheckboxModule
+  } from '@angular/material';  
+
 
 @NgModule({
     imports: [
@@ -24,8 +35,11 @@ import * as $ from "jquery";
         ReactiveFormsModule,
         HttpClientModule,
         FormsModule,
-        routing
-    ],
+        MatSidenavModule,
+        MatCheckboxModule,
+        NgbModule,
+        routing,
+        BrowserAnimationsModule    ],
     declarations: [
         AppComponent,
         AlertComponent,
