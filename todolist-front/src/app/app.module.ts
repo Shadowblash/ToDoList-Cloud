@@ -15,7 +15,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { fakeBackendProvider } from './_helpers';
+// import { fakeBackendProvider } from './_helpers';
 import * as $ from "jquery";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {
@@ -55,7 +55,7 @@ import {
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-        fakeBackendProvider
+   //     fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
