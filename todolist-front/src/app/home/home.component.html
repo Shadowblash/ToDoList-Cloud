@@ -1,10 +1,23 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 6!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} - ({{user.firstname}} {{user.lastname}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
-<p><a [routerLink]="['/login']">Logout</a></p>
+﻿<body>
+
+<!-- FAIRE DEUX COMPOSANTS UN SI ADMIN L'AUTRE SI PAS ADMIN ET AFFICHER L'UN OU L'AUTRE EN FONCTION DE SI IL EST ADMIN OU PAS :
+    ADMIN PEUT : ADD/MODIFIER/DELETE/BAN USERS ET PAREIL POUR LES TASKS
+    USER PEUT : ADD/MODIFIER/DELETE TASKS 
+    Mettre en forme de cards la todolist 
+
+
+    Thomas ==> Regarder pour containairiser le bordel -->
+
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with Angular 6!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} - ({{user.firstname}} {{user.lastname}}) -
+            <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+        </li>
+    </ul>
+    <p>
+        <a [routerLink]="['/login']">Logout</a>
+    </p>
+</body>

@@ -5,7 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({templateUrl: 'login.component.html',
+styleUrls: ['./login.component.scss']})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -48,7 +49,15 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    localStorage.setItem('currentUser', JSON.stringify(data));
+                    if (data && data.username == this.f.username.value && data.password == this.f.password.value) {
+                        this.router.navigate([this.returnUrl]);
+                    } else {
+                        this.alertService.error("Bad credentials");
+                        localStorage.clear();
+                        this.submitted = false;
+                        this.loading = false;
+                    }
                 },
                 error => {
                     this.alertService.error(error);

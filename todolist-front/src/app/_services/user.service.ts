@@ -17,7 +17,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`${config.apiUrl}/users/register`, user);
+        return this.http.post(`${config.apiUrl}/users`, user, {responseType: 'text'});
     }
 
     update(user: User) {

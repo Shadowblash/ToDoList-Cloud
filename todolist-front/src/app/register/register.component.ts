@@ -4,25 +4,35 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService } from '../_services';
+import { Role } from '../_models/role';
+import { RoleService } from '../_services/role.service';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({ templateUrl: 'register.component.html',
+ styleUrls: ['register.component.scss'] })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
 
+    roles: Role[] = [];
+
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         private userService: UserService,
+        private roleService: RoleService,
         private alertService: AlertService) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
+            firstname: ['', Validators.required],
+            lastname: ['', Validators.required],
             username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
+        });
+
+        this.roleService.getAll().subscribe(roles => {
+            this.roles = roles;
         });
     }
 
@@ -38,6 +48,10 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
+        this.registerForm.value.role = this.roles[0];
+
+        console.log(this.registerForm.value);
+
         this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
@@ -46,8 +60,8 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+                    console.log(error);
+                    console.log("ERROOOOOOOOOOOR");
                 });
     }
 }

@@ -27,6 +27,7 @@ import {
     MatSidenavModule,
     MatCheckboxModule
   } from '@angular/material';  
+import { RoleService } from './_services/role.service';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {
         AlertService,
         AuthenticationService,
         UserService,
+        RoleService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
