@@ -28,7 +28,11 @@ import {
     MatCheckboxModule
   } from '@angular/material';  
 import { RoleService } from './_services/role.service';
-
+import { TodolistService } from './_services/todolist.service';;
+import { HomeAdminComponent } from './home-admin/home-admin.component'
+;
+import { HomeUserComponent } from './home-user/home-user.component'
+import { TaskService } from './_services/task.service';
 
 @NgModule({
     imports: [
@@ -47,15 +51,18 @@ import { RoleService } from './_services/role.service';
         HomeComponent,
         LoginComponent,
         RegisterComponent
-    ],
+,
+        HomeAdminComponent ,
+        HomeUserComponent   ],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
         RoleService,
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        TodolistService,
+        TaskService,
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 
    //     fakeBackendProvider
     ],

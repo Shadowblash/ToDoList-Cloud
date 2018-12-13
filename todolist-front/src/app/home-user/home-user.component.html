@@ -1,0 +1,14 @@
+<head>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<div id="list" class="form-label-group">
+  <p *ngIf="myTodolist === null" style="font-size: 18px"><i>You have nothing to do. :)</i></p>  
+  <ol>
+      <li *ngFor="let task of myTodolist.tasks"><p>
+          <em>{{task.libelle}}</em><strong>
+            {{task.date | date}} <i class="fa fa-clock-o" aria-hidden="true"></i></strong> - 
+          <a (click)="deleteTask(task.id)" class="text-danger">Delete</a></p>
+      </li>
+  </ol>
+</div>

@@ -1,0 +1,21 @@
+ul {
+    margin-top: 30px;
+}
+
+ 
+/* LIST #2 */
+#list { width:320px; }
+#list ol { font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color:#2E4A62;  }
+#list ol li { }
+#list ol li p { padding:8px; font-style:normal; font-family:Arial; font-size:18px; color:#000; border-left: 1px solid #999; }
+#list ol li p em { display: block }
+
+#timer {
+    color: #999;
+  }
+#timer span {
+    color: #333;
+  }
+  #timer span:first-child {
+    margin-left: 0;
+  }
